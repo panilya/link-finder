@@ -21,9 +21,8 @@ public class LinkSearchContainer {
 
     @Override
     public String toString() {
-        return "LinkSearchContainer{" +
-                "pathToFile=" + pathToFile.toString() +
-                ", result=" + result +
-                '}';
+        return "( pathToFile= " + pathToFile.toString() +
+                ", is found link= " + result
+                + " )";
     }
 }
