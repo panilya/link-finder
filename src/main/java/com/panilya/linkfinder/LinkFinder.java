@@ -1,5 +1,7 @@
 package com.panilya.linkfinder;
 
+import picocli.CommandLine;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -15,12 +17,13 @@ public class LinkFinder {
         Pattern pattern = Pattern.compile(regexString);
 
         String pathToSearch = "C:\\Users\\Bizzard28\\Dropbox\\Комп'ютер\\Documents\\programs\\tldr";
+        String pathToSearchInOneDir = "C:\\Users\\Bizzard28\\Dropbox\\Комп'ютер\\Documents\\programs\\tldr\\pages";
 
         long startTime = System.nanoTime();
 
         List<LinkSearchContainer> containers;
 
-        containers = listFilesInDir(Paths.get(pathToSearch)).stream()
+        containers = listFilesInDir(Paths.get(args[0])).stream()
                 .map(path -> findRegex(pattern, path))
                 .filter(container -> !container.isFound())
                 .collect(Collectors.toList());
